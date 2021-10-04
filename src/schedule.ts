@@ -6,14 +6,14 @@ const scheduledCallbacks: string[] = [];
 
 interface RecurringCallbackConfig {
   callback: () => void;
-  hour: number;
-  minute: number;
+  hour?: number | number[] | null;
+  minute?: number | number[] | null;
   name: string;
 }
 
 export const scheduleRecurringCallback = ({
-  hour,
-  minute,
+  hour = null,
+  minute = null,
   callback,
   name,
 }: RecurringCallbackConfig) => {
@@ -22,11 +22,7 @@ export const scheduleRecurringCallback = ({
     return;
   }
 
-  const rule = new schedule.RecurrenceRule();
-  rule.hour = hour;
-  rule.minute = minute;
-
-  schedule.scheduleJob(rule, callback);
+  schedule.scheduleJob({ hour, minute }, callback);
   scheduledCallbacks.push(name);
-  console.log(`Scheduled for ${time(rule.hour, rule.minute)} - ${name}`);
+  console.log(`Scheduled ${name}`);
 };

@@ -3114,6 +3114,11 @@ tweetnacl@^1.0.0:
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-1.0.1.tgz#2594d42da73cd036bd0d2a54683dd35a6b55ca17"
   integrity sha512-kcoMoKTPYnoeS50tzoqjPY3Uv9axeuuFAZY9M/9zFnhoVvRfxz9K29IMPD7jGmt2c8SW7i3gT9WqDl2+nV7p4A==
 
+twitter-api-v2@^1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/twitter-api-v2/-/twitter-api-v2-1.5.2.tgz#2160f650bc0e760662e171ccf30ef3930faf3033"
+  integrity sha512-kUrk9u19X4D3RFc4LH3N0bdqRq0fstM3xXerzhxRmPDjwBSyztBGWTU/McGQlGE+q7ADOpfmkvohV5Q4J3ENQw==
+
 typedarray-to-buffer@^3.1.5:
   version "3.1.5"
   resolved "https://registry.yarnpkg.com/typedarray-to-buffer/-/typedarray-to-buffer-3.1.5.tgz#a97ee7a9ff42691b9f783ff1bc5112fe3fca9080"

@@ -32,6 +32,7 @@ import { minesweeper } from './minesweeper';
 import { autopurge } from './autopurge';
 import { choose } from './choose';
 import { song } from './song';
+import { twitterimages } from './twitterImages';
 
 export const COMMANDS: { [code: string]: Command } = {
   help,
@@ -66,6 +67,7 @@ export const COMMANDS: { [code: string]: Command } = {
   minesweeper,
   autopurge,
   song,
+  twitterimages,
 };
 
 export const findCommand = (name: string) => {

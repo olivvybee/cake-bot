@@ -17,6 +17,7 @@ import { onMessageReceived } from './events/messageReceived';
 import { autoPurge } from './jobs/autoPurge';
 import { onMemberLeave } from './events/memberLeave';
 import { runRegexCommands } from './regexCommands';
+import { checkForTwitterImages } from './jobs/twitterImages';
 
 loadEnv();
 
@@ -76,6 +77,12 @@ client.on('ready', () => {
     hour: 17,
     minute: 0,
     name: 'Epic Games announcement',
+  });
+
+  scheduleRecurringCallback({
+    callback: checkForTwitterImages,
+    minute: [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55],
+    name: 'Twitter image download',
   });
 });
 
