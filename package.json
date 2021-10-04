@@ -31,7 +31,7 @@
     "dotenv": "^8.1.0",
     "firebase": "^6.5.0",
     "firebase-admin": "^8.4.0",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "medusajs": "^1.2.4",
     "moment": "^2.24.0",
     "node-html-parser": "^3.1.2",
