@@ -1,9 +1,10 @@
 import { TextChannel } from 'discord.js';
-import { TwitterApi, TweetV1TimelineResult } from 'twitter-api-v2';
+import { TweetV1TimelineResult } from 'twitter-api-v2';
 
 import { DB } from '../database';
 import { client } from '../index';
 import { notUndefined } from '../notUndefined';
+import { twitterClient } from '../twitter';
 
 const findNewTweets = async (serverId: string) => {
   const server = client.guilds.get(serverId);
@@ -18,9 +19,6 @@ const findNewTweets = async (serverId: string) => {
     console.error(`No twitter accounts set up for server ${serverId}`);
     return [];
   }
-
-  const twitterClient = new TwitterApi(process.env.TWITTER_BEARER_TOKEN || '')
-    .readOnly.v1;
 
   let tweets: TweetV1TimelineResult = [];
 
@@ -53,6 +51,10 @@ const findNewTweets = async (serverId: string) => {
 
 export const checkForTwitterImages = async () => {
   const servers = await DB.getPath('twitterImages');
+
+  if (!servers) {
+    return;
+  }
 
   Object.keys(servers).forEach(async (serverId) => {
     const tweets = await findNewTweets(serverId);

@@ -1,9 +1,7 @@
-import { TwitterApi } from 'twitter-api-v2';
-
 import { DB } from '../database';
-import { emoji } from '../emoji';
 import { Command, CommandFn } from '../interfaces';
 import { checkForTwitterImages } from '../jobs/twitterImages';
+import { twitterClient } from '../twitter';
 
 const setUpTwitterImages: CommandFn = async (params, msg) => {
   if (params.length === 0) {
@@ -13,8 +11,6 @@ const setUpTwitterImages: CommandFn = async (params, msg) => {
   const [username] = params;
   const serverId = msg.guild.id;
 
-  const twitterClient = new TwitterApi(process.env.TWITTER_BEARER_TOKEN || '')
-    .readOnly.v1;
   const userTimeline = await twitterClient.userTimelineByUsername(username);
   const lastTweetId = userTimeline.tweets[0].id_str;
 
