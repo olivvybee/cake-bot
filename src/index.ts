@@ -18,6 +18,7 @@ import { autoPurge } from './jobs/autoPurge';
 import { onMemberLeave } from './events/memberLeave';
 import { runRegexCommands } from './regexCommands';
 import { checkForTwitterImages } from './jobs/twitterImages';
+import { checkForGamePassGames } from './jobs/gamePass';
 
 loadEnv();
 
@@ -83,6 +84,13 @@ client.on('ready', () => {
     callback: checkForTwitterImages,
     minute: [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55],
     name: 'Twitter image download',
+  });
+
+  scheduleRecurringCallback({
+    callback: checkForGamePassGames,
+    hour: 8,
+    minute: 0,
+    name: 'Game pass announcement',
   });
 });
 

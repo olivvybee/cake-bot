@@ -33,6 +33,7 @@ import { autopurge } from './autopurge';
 import { choose } from './choose';
 import { song } from './song';
 import { twitterimages } from './twitterImages';
+import { gamepass } from './gamePass';
 
 export const COMMANDS: { [code: string]: Command } = {
   help,
@@ -68,6 +69,7 @@ export const COMMANDS: { [code: string]: Command } = {
   autopurge,
   song,
   twitterimages,
+  gamepass,
 };
 
 export const findCommand = (name: string) => {
