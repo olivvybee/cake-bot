@@ -38,7 +38,7 @@ const findNewGamePassGames = async () => {
   }
 
   const newLastTweetId = tweets[0].id_str;
-  // await DB.setPath(LAST_TWEET_PATH, newLastTweetId);
+  await DB.setPath(LAST_TWEET_PATH, newLastTweetId);
 
   const announcementTweets = tweets.filter(
     (tweet) =>
