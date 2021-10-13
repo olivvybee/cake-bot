@@ -88,7 +88,6 @@ client.on('ready', () => {
 
   scheduleRecurringCallback({
     callback: checkForGamePassGames,
-    hour: 8,
     minute: 0,
     name: 'Game pass announcement',
   });
