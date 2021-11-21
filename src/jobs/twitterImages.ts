@@ -71,6 +71,6 @@ export const checkForTwitterImages = async () => {
     const channelId = servers[serverId].channel;
     const channel = client.channels.get(channelId) as TextChannel;
 
-    imageUrls.forEach((url) => channel.send(url));
+    _chunk(imageUrls, 5).forEach((batch) => channel.send(batch.join('\n')));
   });
 };
