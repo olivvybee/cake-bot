@@ -1,9 +1,9 @@
 import { TextChannel } from 'discord.js';
 import { TweetV1TimelineResult } from 'twitter-api-v2';
+import _chunk from 'lodash/chunk';
 
 import { DB } from '../database';
 import { client } from '../index';
-import { notUndefined } from '../notUndefined';
 import { twitterClient } from '../twitter';
 
 const findNewTweets = async (serverId: string) => {
@@ -59,14 +59,14 @@ export const checkForTwitterImages = async () => {
   Object.keys(servers).forEach(async (serverId) => {
     const tweets = await findNewTweets(serverId);
 
-    const imageUrls = tweets
-      .filter((tweet) => tweet.extended_entities?.media?.[0]?.type === 'photo')
-      .map(
-        (tweet) =>
-          tweet.extended_entities?.media?.[0]?.media_url_https +
-          '?name=4096x4096'
-      )
-      .filter(notUndefined);
+    const imageUrls = tweets.reduce<string[]>((urls, tweet) => {
+      const tweetUrls =
+        tweet.extended_entities?.media
+          ?.filter((media) => !!media && media.type === 'photo')
+          .map((media) => media.media_url_https + '?name=4096x4096') || [];
+
+      return [...urls, ...tweetUrls];
+    }, []);
 
     const channelId = servers[serverId].channel;
     const channel = client.channels.get(channelId) as TextChannel;
