@@ -34,6 +34,8 @@ import { choose } from './choose';
 import { song } from './song';
 import { twitterimages } from './twitterImages';
 import { gamepass } from './gamePass';
+import { listServers as listservers } from './listservers';
+import { leaveServer as leaveserver } from './leaveserver';
 
 export const COMMANDS: { [code: string]: Command } = {
   help,
@@ -70,6 +72,8 @@ export const COMMANDS: { [code: string]: Command } = {
   song,
   twitterimages,
   gamepass,
+  listservers,
+  leaveserver,
 };
 
 export const findCommand = (name: string) => {
