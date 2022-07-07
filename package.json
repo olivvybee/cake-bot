@@ -33,7 +33,7 @@
     "firebase-admin": "^8.4.0",
     "lodash": "^4.17.19",
     "medusajs": "^1.2.4",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "node-html-parser": "^3.1.2",
     "node-schedule": "^1.3.2",
     "ts-node": "^8.3.0",
